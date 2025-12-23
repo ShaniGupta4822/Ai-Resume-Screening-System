@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Match Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .score {
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .label {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: {{ confidence_color }};
+        }
+        .progress {
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 18px;
+            width: {{ match_score }}%;
+            background: {{ confidence_color }};
+        }
+
+        /* 🔹 SKILL TAGS */
+        .skills {
+            margin-top: 10px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .tag.match {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .tag.missing {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        h3 {
+            margin-top: 30px;
+        }
+        .back {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Resume Match Result 📊</h1>
+
+    <h2>Job Role: {{ job_title }}</h2>
+
+    <div class="score">
+        Match Score: {{ match_score }}%
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="label">
+        Overall Evaluation: {{ confidence_label }}
+    </div>
+
+    <h3>Matched Skills</h3>
+    <div class="skills">
+        {% for skill in matched_skills %}
+            <span class="tag match">{{ skill }}</span>
+        {% empty %}
+            <span>No matched skills</span>
+        {% endfor %}
+    </div>
+
+    <h3>Missing Skills</h3>
+    <div class="skills">
+        {% for skill in missing_skills %}
+            <span class="tag missing">{{ skill }}</span>
+        {% empty %}
+            <span class="tag match">None 🎉</span>
+        {% endfor %}
+    </div>
+
+    {% if improvement_tips %}
+    <h3>How to Improve Your Score 🚀</h3>
+    <ul>
+        {% for tip in improvement_tips %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <a class="back" href="/">← Analyze Another Resume</a>
+</div>
+
+</body>
+</html>
