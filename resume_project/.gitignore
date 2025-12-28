@@ -1,15 +1,9 @@
-# Virtual environment
 venv/
-
-# Python cache
 __pycache__/
 *.pyc
 
-# Django DB
 db.sqlite3
 
-# Environment
 .env
 
-# VS Code
 .vscode/
