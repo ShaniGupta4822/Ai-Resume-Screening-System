@@ -15,20 +15,6 @@ An AI-powered Resume Screening System built using **Django**, **Python**, and **
 - Improvement tips for better score
 - Admin panel to manage job roles and results
 
----
-
-## 🖼️ Screenshots
-
-### 🏠 Home Page
-![Home Page](screenshots/home.png)
-
-### 📊 Resume Match Result
-![Result Page](screenshots/result.png)
-
-### 🔐 Admin Panel
-![Admin Panel](screenshots/admin.png)
-
----
 
 ## ⚙️ Tech Stack
 
